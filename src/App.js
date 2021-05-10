@@ -4,17 +4,23 @@ import './style.css';
 export default function App() {
   const [name, setName] = useState('');
 
-  //const [renderCount, setRenderCount] = useState(0);
+  const inputRef = useRef();
 
-  const renderCount = useRef(1);
-
-  useEffect(() => renderCount.current++);
+  function focus() {
+    inputRef.current.focus();
+    console.log(inputRef.current);
+  }
 
   return (
     <div>
-      <input type="text" value={name} onChange={e => setName(e.target.value)} />
+      <input
+        ref={inputRef}
+        type="text"
+        value={name}
+        onChange={e => setName(e.target.value)}
+      />
       <p>my name is :{name}</p>
-      <p>{renderCount.current}</p>
+      <button onClick={focus}>click</button>
     </div>
   );
 }
