@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-export default function Count() {
+const Count = () => {
   const [count, setCount] = useState(0);
   const renders = useRef(0);
 
@@ -11,4 +11,6 @@ export default function Count() {
       <button onClick={() => setCount(c => c + 1)}>Increment</button>
     </div>
   );
-}
+};
+
+export default React.memo(Count);
