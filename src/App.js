@@ -1,26 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Count from './Count';
 import './style.css';
 
 export default function App() {
-  const [name, setName] = useState('');
-
-  const inputRef = useRef();
-
-  function focus() {
-    inputRef.current.focus();
-    console.log(inputRef.current);
-  }
+  const [text, setText] = useState('');
 
   return (
     <div>
-      <input
-        ref={inputRef}
-        type="text"
-        value={name}
-        onChange={e => setName(e.target.value)}
-      />
-      <p>my name is :{name}</p>
-      <button onClick={focus}>click</button>
+      <input type="text" value={text} onChange={e => setText(e.target.value)} />
+      <Count />
     </div>
   );
 }
